@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // key window(window가 여러개 존재할 때, 가장 앞쪽에 배치된 window)로 설정
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = LoginViewController()
+//        window?.rootViewController = LoginViewController()
+        window?.rootViewController = OnboardingContainerViewController()
         
         return true
     }

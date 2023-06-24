@@ -10,7 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let titleLabel = UILabel()
-    let discriptionLabel = UILabel()
+    let subtitleLabel = UILabel()
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
@@ -34,6 +34,19 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func style() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.text = "Bankey"
+
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.textAlignment = .center
+        subtitleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        subtitleLabel.adjustsFontForContentSizeCategory = true
+        subtitleLabel.numberOfLines = 0
+        subtitleLabel.text = "Your premium source for all things banking!"
+        
         // 사이즈가 자동으로 설정되는 것을 방지하기 위해 커스텀 뷰와 오토레이아웃을 사용할 때 항상 이걸 해줘야 한다.
         loginView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,27 +61,30 @@ extension LoginViewController {
         errorMessageLabel.textColor = .systemRed // system colors -> 어떤 모드인지에 따라 자동으로 색이 살짝 바뀐다.
         errorMessageLabel.numberOfLines = 0 // multiline
         errorMessageLabel.isHidden = true
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 0
-        titleLabel.text = "Bankey"
-        titleLabel.font = .boldSystemFont(ofSize: 30)
-        
-        discriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        discriptionLabel.textAlignment = .center
-        discriptionLabel.numberOfLines = 0
-        discriptionLabel.text = "Your premium source for all things banking!"
-        discriptionLabel.font = .systemFont(ofSize: 20)
     }
     
     private func layout() {
         // view controller에 추가
         view.addSubview(titleLabel)
-        view.addSubview(discriptionLabel)
+        view.addSubview(subtitleLabel)
         view.addSubview(loginView)
         view.addSubview(signInButton)
         view.addSubview(errorMessageLabel)
+        
+        // Title Label
+        NSLayoutConstraint.activate([
+            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3),
+            titleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
+        ])
+        
+        // Subtitle Label
+        NSLayoutConstraint.activate([
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 3),
+            subtitleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
+            
+        ])
         
         // Login View
         NSLayoutConstraint.activate([
@@ -90,21 +106,6 @@ extension LoginViewController {
             errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: signInButton.bottomAnchor, multiplier: 2),
             errorMessageLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
             errorMessageLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
-        ])
-        
-        // Discription Label
-        NSLayoutConstraint.activate([
-            loginView.topAnchor.constraint(equalToSystemSpacingBelow: discriptionLabel.bottomAnchor, multiplier: 3),
-            discriptionLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
-            discriptionLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
-            
-        ])
-        
-        // Title Label
-        NSLayoutConstraint.activate([
-            discriptionLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3),
-            titleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
     }
 }
