@@ -5,6 +5,8 @@
 //  Created by Juhyun Yun on 2023/06/26.
 //
 
+// Enum을 사용한 싱글톤인데 이해 안됨
+// UserDefaults 사용법에 대해 좀 더 공부하기
 import Foundation
 
 public class LocalState {
