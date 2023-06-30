@@ -34,6 +34,13 @@ class LoginViewController: UIViewController {
         return loginView.passwordTextField.text
     }
     
+    // animation
+    var leadingEdgeOnScreen: CGFloat = 16
+    var leadingEdgeOffScreen: CGFloat = -1000
+    
+    var titleLeadingAnchor: NSLayoutConstraint?
+    var subtitleLeadingAnchor: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
@@ -43,6 +50,11 @@ class LoginViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         signInButton.configuration?.showsActivityIndicator = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animate()
     }
 
 
@@ -55,6 +67,7 @@ extension LoginViewController {
         titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.text = "Bankey"
+        titleLabel.alpha = 0
 
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.textAlignment = .center
@@ -62,6 +75,7 @@ extension LoginViewController {
         subtitleLabel.adjustsFontForContentSizeCategory = true
         subtitleLabel.numberOfLines = 0
         subtitleLabel.text = "Your premium source for all things banking!"
+        subtitleLabel.alpha = 0
         
         // 사이즈가 자동으로 설정되는 것을 방지하기 위해 커스텀 뷰와 오토레이아웃을 사용할 때 항상 이걸 해줘야 한다.
         loginView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,17 +104,21 @@ extension LoginViewController {
         // Title Label
         NSLayoutConstraint.activate([
             subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3),
-            titleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
+        
+        // leading anchor를 변수에 넣어야 되기 때문에 activate 배열에서 빼서 따로 설정해줌
+        titleLeadingAnchor = titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        titleLeadingAnchor?.isActive = true
         
         // Subtitle Label
         NSLayoutConstraint.activate([
             loginView.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 3),
-            subtitleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
-            
+            subtitleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
         ])
+        
+        subtitleLeadingAnchor = subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        subtitleLeadingAnchor?.isActive = true
         
         // Login View
         NSLayoutConstraint.activate([
@@ -157,3 +175,35 @@ extension LoginViewController {
         errorMessageLabel.text = message
     }
 }
+
+// MARK: - Animations
+extension LoginViewController {
+    private func animate() {
+        let duration = 0.8
+        
+        let animator1 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+            self.titleLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            
+            // 레이아웃 업데이트 됐다고 알리는 것
+            self.view.layoutIfNeeded()
+        }
+        animator1.startAnimation()
+        
+        let animator2 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+            self.subtitleLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            self.view.layoutIfNeeded()
+        }
+        
+        animator2.startAnimation(afterDelay: 0.2)
+        
+        let animator3 = UIViewPropertyAnimator(duration: duration*2, curve: .easeInOut) {
+            self.titleLabel.alpha = 1
+            self.subtitleLabel.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+        
+        animator3.startAnimation(afterDelay: 0.2)
+    }
+}
+
+// simulator slow animation 설정 가능
