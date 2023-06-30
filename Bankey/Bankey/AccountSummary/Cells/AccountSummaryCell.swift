@@ -58,7 +58,7 @@ extension AccountSummaryCell {
     private func setup() {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        typeLabel.adjustsFontSizeToFitWidth = true
+        typeLabel.adjustsFontForContentSizeCategory = true
         typeLabel.text = "Account type"
         
         underlineView.translatesAutoresizingMaskIntoConstraints = false
