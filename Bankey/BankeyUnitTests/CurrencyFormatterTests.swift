@@ -11,6 +11,10 @@ import XCTest
 
 @testable import Bankey // Bankey 폴더에 있는 정보들을 import
 
+// Unit Test
+// 1. 유닛 테스트는 코드 디자인에 영향을 준다.
+// 2. 유닛 테스트는 테스트로 실행 가능한 문서이다.
+// 3. Continuous integration process의 한 부분이다.
 class Test: XCTestCase {
     var formatter: CurrencyFormatter!
     
