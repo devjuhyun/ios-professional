@@ -8,16 +8,17 @@
 import Foundation
 import UIKit
 
+// 클래스 외부에 선언해서 어디서든 접근 가능(네트워킹 하려고)
+enum AccountType: String, Codable {
+    case Banking
+    case CreditCard
+    case Investment
+}
+
 class AccountSummaryCell: UITableViewCell {
-    
-    // 클래스 밖에 선언해도 되지만
-    enum AccountType: String {
-        case Banking
-        case CreditCard
-        case Investment
-    }
-    
-    // 셀이 enum과 view model과 연관되어있다는 것을 보여주기 위해 안에 선언
+        
+    // 클래스 밖에 선언해도 되지만 셀이 enum과 view model과
+    // 연관되어있다는 것을 보여주기 위해 안에 선언
     struct ViewModel {
         let accountType: AccountType
         let accountName: String
