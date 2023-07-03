@@ -97,7 +97,7 @@ extension AccountSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-}
+} 
 
 // MARK: Actions
 extension AccountSummaryViewController {
