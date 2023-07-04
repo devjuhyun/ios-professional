@@ -51,7 +51,7 @@ class OnboardingContainerViewController: UIViewController {
         view.backgroundColor = .systemPurple
         
         // 뷰 컨트롤러에 자식 뷰 컨트롤러를 추가할 때는 항상 다음 3줄을 작성해 주어야 한다.
-        // 페이지 뷰 컨트롤러를 뷰 컨트롤러의 자식 뷰 컨트롤러로 추가하면 페이지 네비게이터? 생김
+        // 페이지 뷰 컨트롤러를 뷰 컨트롤러의 자식 뷰 컨트롤러로 추가하면 페이지 네비게이터? 자동으로 생김
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.didMove(toParent: self)
