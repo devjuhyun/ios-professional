@@ -63,7 +63,6 @@ extension PasswordCriteriaView {
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "circle")!.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
-        // 이미지 defalut intrinsic content size로 유지하게
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
@@ -91,6 +90,7 @@ extension PasswordCriteriaView {
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
         ])
         
+        // 이미지 defalut intrinsic content size로 유지하게
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
