@@ -14,6 +14,7 @@
 		6B225CC72A565BFB003EE75D /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B225CC62A565BFB003EE75D /* PasswordTextField.swift */; };
 		6B66F78C2A578D5400AAFCB3 /* PasswordCriteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B66F78B2A578D5400AAFCB3 /* PasswordCriteriaView.swift */; };
 		6B66F78E2A57AA9100AAFCB3 /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B66F78D2A57AA9100AAFCB3 /* PasswordStatusView.swift */; };
+		6B66F7B12A58412200AAFCB3 /* PasswordCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B66F7B02A58412200AAFCB3 /* PasswordCriteria.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6B225CC62A565BFB003EE75D /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		6B66F78B2A578D5400AAFCB3 /* PasswordCriteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteriaView.swift; sourceTree = "<group>"; };
 		6B66F78D2A57AA9100AAFCB3 /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
+		6B66F7B02A58412200AAFCB3 /* PasswordCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteria.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				6B66F78B2A578D5400AAFCB3 /* PasswordCriteriaView.swift */,
 				6B66F78D2A57AA9100AAFCB3 /* PasswordStatusView.swift */,
+				6B66F7B02A58412200AAFCB3 /* PasswordCriteria.swift */,
 			);
 			path = PasswordStatusView;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B225CB62A564FDB003EE75D /* ViewController.swift in Sources */,
+				6B66F7B12A58412200AAFCB3 /* PasswordCriteria.swift in Sources */,
 				6B225CB22A564FDB003EE75D /* AppDelegate.swift in Sources */,
 				6B66F78C2A578D5400AAFCB3 /* PasswordCriteriaView.swift in Sources */,
 				6B66F78E2A57AA9100AAFCB3 /* PasswordStatusView.swift in Sources */,
